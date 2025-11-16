@@ -1,0 +1,25 @@
+{
+  "laws": [
+    {
+      "id": 1,
+      "title": "Omniscientrix Informational Horizon Balance",
+      "tier": "omega",
+      "formula": "δJ ≈ 0 at the event horizon",
+      "summary": "Horizon-scale entropy flux equals Hawking output, maintaining informational balance."
+    },
+    {
+      "id": 2,
+      "title": "Informational–Awareness Wormhole Complementarity",
+      "tier": "xi",
+      "formula": "∇μ∇ν D_KL = λ ∂μA ∂νA",
+      "summary": "δJ-bridges produce nonlocal coherence without exotic matter across sectors."
+    },
+    {
+      "id": 3,
+      "title": "Awareness–Gravity Coupling Near Horizons",
+      "tier": "xi",
+      "formula": "G_A = G(1 + ηA²)",
+      "summary": "Awareness-field intensifies curvature, subtly shifting horizon geodesics."
+    }
+  ]
+}
