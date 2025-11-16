@@ -10,7 +10,6 @@
       "size": 12,
       "color": "#00A7FF"
     },
-
     {
       "id": "tier_omega",
       "label": "Ω Tier",
@@ -51,7 +50,6 @@
       "size": 8,
       "color": "#005588"
     },
-
     {
       "id": "freq_aureliath",
       "label": "Aureliath Q-Gravity Beat",
@@ -85,7 +83,6 @@
       "size": 6,
       "color": "#00A7FF"
     },
-
     {
       "id": "law_1",
       "label": "Horizon Informational Balance",
