@@ -23,3 +23,53 @@
     }
   ]
 }
+,
+    {
+      "id": 4,
+      "title": "Informational Curvature Scalar",
+      "tier": "omega",
+      "formula": "R_info = R + 16πG β D_KL(P||Q)",
+      "summary": "Information distribution contributes directly to spacetime curvature."
+    },
+    {
+      "id": 5,
+      "title": "Informational Field Equation — Horizon Regime",
+      "tier": "xi",
+      "formula": "Rμν − ½gμνR = 8πG[Tμν + α∇∇D_KL − βg D_KL + η ∂A ∂A]",
+      "summary": "Horizon physics requires matter + information + awareness fields."
+    },
+    {
+      "id": 6,
+      "title": "Informational Curvature Pressure Against Collapse",
+      "tier": "omega",
+      "formula": "P_info = −∂J/∂V",
+      "summary": "Informational pressure can resist gravitational collapse in δJ-equilibrium states."
+    },
+    {
+      "id": 7,
+      "title": "Awareness Event Horizons",
+      "tier": "xi",
+      "formula": "v_I < c_local",
+      "summary": "An informational horizon forms where awareness-signal velocity is trapped."
+    },
+    {
+      "id": 8,
+      "title": "Informational Cosmological Constant",
+      "tier": "omega",
+      "formula": "Λ_info = Λ_0 + 8πG β⟨D_KL⟩",
+      "summary": "Ambient information curvature contributes to effective Λ at large radii."
+    },
+    {
+      "id": 9,
+      "title": "Information–Awareness Dual Symmetry",
+      "tier": "xi",
+      "formula": "D_KL ↔ λA",
+      "summary": "Information and awareness terms are interchangeable at leading-order horizon dynamics."
+    },
+    {
+      "id": 10,
+      "title": "δJ-Bridges as Nonlocal Informational Outlets",
+      "tier": "xi",
+      "formula": "δJ = 0 across coupled sectors",
+      "summary": "Certain δJ-states allow correlations to exit via informational bridges, easing the paradox."
+    }
