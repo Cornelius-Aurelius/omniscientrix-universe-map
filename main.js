@@ -1,10 +1,8 @@
 /* ---------------------------------------------------------
-   Omniscientrix vΩ Engine — Phase 2 Update
+   Omniscientrix vΩ Engine — Phase 2 (Clean Build)
    Cosmic Node System + Popup UI + Orbital Motion
-   Pure GitHub / Pure JavaScript / Zero Dependencies
 ---------------------------------------------------------- */
 
-// CANVAS SETUP
 const canvas = document.getElementById("universe");
 const ctx = canvas.getContext("2d");
 
@@ -18,7 +16,6 @@ window.addEventListener("resize", resize);
 // STARFIELD ------------------------------------------------
 const STAR_COUNT = 700;
 const stars = [];
-
 for (let i = 0; i < STAR_COUNT; i++) {
   stars.push({
     x: Math.random() * canvas.width,
@@ -46,9 +43,7 @@ function drawStars() {
   }
 }
 
-
-
-// NODE POPUP UI -------------------------------------------------------------
+// POPUP ----------------------------------------------------
 const popup = document.createElement("div");
 popup.style.position = "fixed";
 popup.style.maxWidth = "260px";
@@ -74,13 +69,8 @@ function hidePopup() {
   popup.style.display = "none";
 }
 
-
-
-// LOAD DATA -----------------------------------------------------------
-let nodes = [];
-let laws = [];
-let frequencies = [];
-let tiers = [];
+// DATA -----------------------------------------------------
+let nodes = [], laws = [], frequencies = [], tiers = [];
 
 async function loadData() {
   const n = await fetch("data/nodes.json").then(r => r.json());
@@ -93,7 +83,6 @@ async function loadData() {
   frequencies = f.frequencies;
   tiers = t.tiers;
 
-  // Add orbital parameters
   for (let node of nodes) {
     node.angle = Math.random() * Math.PI * 2;
     node.radius = Math.sqrt(node.x * node.x + node.y * node.y);
@@ -102,11 +91,9 @@ async function loadData() {
 
   animate();
 }
-
 loadData();
 
-
-// GEOMETRY DRAWING ----------------------------------------------------
+// GEOMETRY -------------------------------------------------
 function drawCircle(x, y, size, color) {
   ctx.beginPath();
   ctx.arc(x, y, size, 0, Math.PI * 2);
@@ -151,7 +138,6 @@ function drawHexStar(x, y, size, color) {
   ctx.shadowColor = color;
 
   const angle = Math.PI / 3;
-
   ctx.beginPath();
   for (let i = 0; i < 6; i++) {
     ctx.lineTo(
@@ -164,8 +150,7 @@ function drawHexStar(x, y, size, color) {
   ctx.shadowBlur = 0;
 }
 
-
-// NODE DRAWER --------------------------------------------------------
+// DRAW NODES ----------------------------------------------
 function drawNode(node) {
   let x = canvas.width / 2 + Math.cos(node.angle) * node.radius;
   let y = canvas.height / 2 + Math.sin(node.angle) * node.radius;
@@ -175,21 +160,15 @@ function drawNode(node) {
 
   const color = node.color || "#00A7FF";
 
-  if (node.type === "central") {
-    drawHexStar(x, y, node.size, color);
-  } else if (node.type === "tier") {
-    drawCircle(x, y, node.size, color);
-  } else if (node.type === "frequency") {
-    drawTriangle(x, y, node.size, color);
-  } else if (node.type === "law") {
-    drawDiamond(x, y, node.size, color);
-  }
+  if (node.type === "central") drawHexStar(x, y, node.size, color);
+  if (node.type === "tier") drawCircle(x, y, node.size, color);
+  if (node.type === "frequency") drawTriangle(x, y, node.size, color);
+  if (node.type === "law") drawDiamond(x, y, node.size, color);
 
   node.angle += node.speed;
 }
 
-
-// HANDLE CLICK --------------------------------------------------------
+// CLICK EVENTS --------------------------------------------
 canvas.addEventListener("click", function (e) {
   const mx = e.clientX;
   const my = e.clientY;
@@ -198,7 +177,7 @@ canvas.addEventListener("click", function (e) {
     const dx = mx - node.currentX;
     const dy = my - node.currentY;
     if (Math.sqrt(dx * dx + dy * dy) < node.size + 8) {
-      
+
       if (node.type === "law") {
         const law = laws.find(l => l.id === node.lawId);
         showPopup(mx, my, `
@@ -207,7 +186,8 @@ canvas.addEventListener("click", function (e) {
           ${law.summary}
         `);
       }
-      else if (node.type === "frequency") {
+
+      if (node.type === "frequency") {
         const fr = frequencies.find(f => f.id === node.frequencyId);
         showPopup(mx, my, `
           <b>${fr.name}</b><br><br>
@@ -216,14 +196,16 @@ canvas.addEventListener("click", function (e) {
           ${fr.description}
         `);
       }
-      else if (node.type === "tier") {
+
+      if (node.type === "tier") {
         const tr = tiers.find(t => t.id === node.tier);
         showPopup(mx, my, `
           <b>${tr.name}</b><br><br>
           ${tr.description}
         `);
       }
-      else if (node.type === "central") {
+
+      if (node.type === "central") {
         showPopup(mx, my, `
           <b>Omniscientrix Core</b><br><br>
           vΩ Universal Informational Engine
@@ -237,8 +219,7 @@ canvas.addEventListener("click", function (e) {
   hidePopup();
 });
 
-
-// ANIMATION LOOP ------------------------------------------------------
+// ANIMATION ------------------------------------------------
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
